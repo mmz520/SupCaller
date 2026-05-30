@@ -3,7 +3,7 @@ package main
 import (
 	"SupCaller/common/config"
 	"SupCaller/common/database"
-	"SupCaller/internal/security/controllers"
+	"SupCaller/common/router"
 	"SupCaller/internal/security/middleware"
 	"fmt"
 	"log"
@@ -51,89 +51,5 @@ func setupRoutes(r *gin.Engine) {
 	})
 	// API路由组
 	api := r.Group("/api/v1")
-	{
-		// 认证相关路由组
-		auth := api.Group("/auth")
-		{
-			auth.POST("/login", controllers.LoginHandler)
-			auth.POST("/register", controllers.RegisterHandler)
-			auth.POST("/oauth2/authorize", controllers.OAuth2AuthorizeHandler)
-			auth.POST("/oauth2/token", controllers.OAuth2TokenHandler)
-		}
-	}
-}
-
-func listUsers(c *gin.Context) {
-	// 实际实现用户列表逻辑
-	c.JSON(200, gin.H{"message": "List users endpoint"})
-}
-
-func createUser(c *gin.Context) {
-	// 实际实现创建用户逻辑
-	c.JSON(200, gin.H{"message": "Create user endpoint"})
-}
-
-func getUser(c *gin.Context) {
-	// 实际实现获取用户逻辑
-	c.JSON(200, gin.H{"message": "Get user endpoint"})
-}
-
-func updateUser(c *gin.Context) {
-	// 实际实现更新用户逻辑
-	c.JSON(200, gin.H{"message": "Update user endpoint"})
-}
-
-func deleteUser(c *gin.Context) {
-	// 实际实现删除用户逻辑
-	c.JSON(200, gin.H{"message": "Delete user endpoint"})
-}
-
-func listRoles(c *gin.Context) {
-	// 实际实现角色列表逻辑
-	c.JSON(200, gin.H{"message": "List roles endpoint"})
-}
-
-func createRole(c *gin.Context) {
-	// 实际实现创建角色逻辑
-	c.JSON(200, gin.H{"message": "Create role endpoint"})
-}
-
-func getRole(c *gin.Context) {
-	// 实际实现获取角色逻辑
-	c.JSON(200, gin.H{"message": "Get role endpoint"})
-}
-
-func updateRole(c *gin.Context) {
-	// 实际实现更新角色逻辑
-	c.JSON(200, gin.H{"message": "Update role endpoint"})
-}
-
-func deleteRole(c *gin.Context) {
-	// 实际实现删除角色逻辑
-	c.JSON(200, gin.H{"message": "Delete role endpoint"})
-}
-
-func listPermissions(c *gin.Context) {
-	// 实际实现权限列表逻辑
-	c.JSON(200, gin.H{"message": "List permissions endpoint"})
-}
-
-func createPermission(c *gin.Context) {
-	// 实际实现创建权限逻辑
-	c.JSON(200, gin.H{"message": "Create permission endpoint"})
-}
-
-func getPermission(c *gin.Context) {
-	// 实际实现获取权限逻辑
-	c.JSON(200, gin.H{"message": "Get permission endpoint"})
-}
-
-func updatePermission(c *gin.Context) {
-	// 实际实现更新权限逻辑
-	c.JSON(200, gin.H{"message": "Update permission endpoint"})
-}
-
-func deletePermission(c *gin.Context) {
-	// 实际实现删除权限逻辑
-	c.JSON(200, gin.H{"message": "Delete permission endpoint"})
+	router.AutoRegister(api)
 }

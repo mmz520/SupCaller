@@ -2,6 +2,7 @@ package controllers
 
 import (
 	"SupCaller/common/response"
+	"SupCaller/common/router"
 	"SupCaller/internal/security/dto"
 	"SupCaller/internal/security/service"
 	"net/http"
@@ -12,7 +13,15 @@ import (
 )
 
 // AuthService 登录服务实例
-var authService service.AuthServiceInterface=impl.NewAuthService()
+var authService service.AuthServiceInterface = impl.NewAuthService()
+
+func init() {
+	routerRegister := router.NewRouterRegister()
+	routerRegister.Register("/auth", func(g *gin.RouterGroup) {
+		g.POST("/login", LoginHandler)
+		g.POST("/register", RegisterHandler)
+	})
+}
 
 // LoginHandler 登录处理函数
 func LoginHandler(c *gin.Context) {

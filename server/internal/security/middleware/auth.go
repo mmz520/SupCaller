@@ -2,7 +2,7 @@ package middleware
 
 import (
 	"SupCaller/common/response"
-	"SupCaller/common/untils"
+	"SupCaller/common/utils"
 	"SupCaller/internal/security/rbac"
 	"net/http"
 	"strings"
@@ -97,7 +97,7 @@ func (am *AuthMiddleware) Handle() gin.HandlerFunc {
 		tokenString := authHeader[7:] // 去掉 "Bearer " 前缀
 
 		// 解析token
-		claims, err := untils.ParseToken(tokenString)
+		claims, err := utils.ParseToken(tokenString)
 		if err != nil {
 			c.JSON(http.StatusUnauthorized, response.Error(401, err.Error()))
 			c.Abort()

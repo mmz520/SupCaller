@@ -15,6 +15,7 @@ type Configuration struct {
 	Database DatabaseConfig `mapstructure:"database"`
 	JWT      JWTConfig      `mapstructure:"jwt"`
 	Log      LogConfig      `mapstructure:"log"`
+	Redis    RedisConfig    `mapstructure:"redis"`
 	OAuth2   OAuth2Config   `mapstructure:"oauth2"`
 	Ignore   []string       `mapstructure:"ignore"`
 }
@@ -57,6 +58,19 @@ type OAuth2Config struct {
 	AccessTokenExpire  string `mapstructure:"access_token_expire"`
 	RefreshTokenExpire string `mapstructure:"refresh_token_expire"`
 	AuthCodeExpire     string `mapstructure:"authorization_code_expire"`
+}
+
+// RedisConfig Redis配置
+type RedisConfig struct {
+	Host           string `mapstructure:"host"`
+	Port           int    `mapstructure:"port"`
+	Password       string `mapstructure:"password"`
+	DB             int    `mapstructure:"db"`
+	PoolSize       int    `mapstructure:"pool_size"`
+	IdleTimeout    string `mapstructure:"idle_timeout"`
+	ConnectTimeout string `mapstructure:"connect_timeout"`
+	ReadTimeout    string `mapstructure:"read_timeout"`
+	WriteTimeout   string `mapstructure:"write_timeout"`
 }
 
 // LoadConfig 加载配置文件

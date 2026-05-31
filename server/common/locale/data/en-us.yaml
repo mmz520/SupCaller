@@ -1,0 +1,39 @@
+# Common error messages
+error:
+  unknown: "Unknown error"
+  internal_server_error: "Internal server error"
+  invalid_request: "Invalid request parameters"
+  unauthorized: "Unauthorized access"
+  forbidden: "Access denied"
+  not_found: "Resource not found"
+  method_not_allowed: "Method not allowed"
+  too_many_requests: "Too many requests"
+  validation_failed: "Validation failed"
+
+# Auth error messages
+auth:
+  login_failed: "Login failed, incorrect username or password"
+  token_expired: "Token expired"
+  token_invalid: "Invalid token"
+  token_missing: "Token missing"
+  refresh_token_invalid: "Invalid refresh token"
+  user_not_found: "User not found"
+  password_incorrect: "Incorrect password"
+  account_locked: "Account locked"
+  account_disabled: "Account disabled"
+  email_not_verified: "Email not verified"
+
+# Success messages
+success:
+  login_success: "Login successful"
+  logout_success: "Logout successful"
+  register_success: "Registration successful"
+  update_success: "Update successful"
+  delete_success: "Delete successful"
+  create_success: "Create successful"
+
+# Info messages
+info:
+  please_login: "Please login first"
+  please_verify_email: "Please verify email"
+  password_changed: "Password changed, please login again"

@@ -1,0 +1,39 @@
+# 通用错误信息
+error:
+  unknown: "未知错误"
+  internal_server_error: "服务器内部错误"
+  invalid_request: "请求参数无效"
+  unauthorized: "未授权访问"
+  forbidden: "访问被拒绝"
+  not_found: "资源未找到"
+  method_not_allowed: "不支持的请求方法"
+  too_many_requests: "请求过于频繁"
+  validation_failed: "数据验证失败"
+
+# Auth错误信息
+auth:
+  login_failed: "登录失败，用户名或密码错误"
+  token_expired: "令牌已过期"
+  token_invalid: "令牌无效"
+  token_missing: "缺少令牌"
+  refresh_token_invalid: "刷新令牌无效"
+  user_not_found: "用户不存在"
+  password_incorrect: "密码错误"
+  account_locked: "账户已锁定"
+  account_disabled: "账户已禁用"
+  email_not_verified: "邮箱未验证"
+
+# 成功信息
+success:
+  login_success: "登录成功"
+  logout_success: "退出成功"
+  register_success: "注册成功"
+  update_success: "更新成功"
+  delete_success: "删除成功"
+  create_success: "创建成功"
+
+# 提示信息
+info:
+  please_login: "请先登录"
+  please_verify_email: "请验证邮箱"
+  password_changed: "密码已修改，请重新登录"

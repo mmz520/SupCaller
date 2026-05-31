@@ -3,8 +3,12 @@ package main
 import (
 	"SupCaller/common/config"
 	"SupCaller/common/database"
+	"SupCaller/common/locale"
+	"SupCaller/common/logger"
+	commmiddleware "SupCaller/common/middleware"
+	"SupCaller/common/redis"
 	"SupCaller/common/router"
-	"SupCaller/internal/security/middleware"
+	intmiddleware "SupCaller/internal/security/middleware"
 	"fmt"
 	"log"
 
@@ -15,16 +19,32 @@ func main() {
 	// 加载配置
 	config.LoadConfig()
 
+	// 初始化国际化
+	if err := locale.InitLocale(); err != nil {
+		log.Fatalf("Failed to initialize locale: %v", err)
+	}
+
 	// 初始化数据库
 	database.InitDB()
+
+	// 初始化Redis
+	redis.InitRedis()
+
+	// 初始化操作日志
+	if err := logger.InitOperationLog(); err != nil {
+		log.Fatalf("Failed to initialize operation log: %v", err)
+	}
 
 	// 创建Gin引擎
 	r := gin.Default()
 
+	// 使用操作日志中间件
+	r.Use(commmiddleware.OperationLogMiddleware())
+
 	// 初始化认证中间件
-	authMiddleware := middleware.NewAuthMiddleware(
+	authMiddleware := intmiddleware.NewAuthMiddleware(
 		database.DB,
-		middleware.WithIgnore(config.Config.Ignore),
+		intmiddleware.WithIgnore(config.Config.Ignore),
 	)
 
 	// 使用认证中间件
